@@ -22,8 +22,18 @@
 
 - 🎯 Programming Exercises
   - Floyd's Triangle Variations
-  - Number Pattern Programs
-  - Optimization Problems
+    - Binary Floyd's Triangle
+      - [Efficient Implementation](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q2_Floyd'sTriangle/binary/efficient.java)
+      - [Main Program](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q2_Floyd'sTriangle/binary/main.java)
+    - Numeric Floyd's Triangle
+      - [Efficient Implementation](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q2_Floyd'sTriangle/num/efficient.java)
+      - [Main Program](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q2_Floyd'sTriangle/num/main.java)
+  - Number Programs
+    - [Prime Sum Calculator](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q3_PrimeSum/main.java)
+    - [GCD & LCM Calculator](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q4_GCD_LCM/main.java)
+    - [Decimal to Binary Converter](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q5_DecimalToBinary/main.java)
+    - [Perfect Number Finder](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q6_PerfectNumList/main.java)
+    - [Reverse Alphabets Pattern](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q7_Rev_Alphabets/main.java)
 
 ## 🎯 Purpose
 
@@ -65,11 +75,18 @@ jar cvf <jarname>.jar *.class
 
 ```
 Java/
-├── Lab_Q/                 # Lab Questions and Solutions
-│   ├── Q1_SumOfInt/      # Integer Sum Problems
-│   └── Q2_Floyd'sTriangle/# Pattern Programs
-├── Exercises/            # Practice Problems
-└── Notes/               # Learning Materials
+├── Lab_Q/                      # Lab Questions and Solutions
+│   ├── Q1_SumOfInt/           # Integer Sum Problems
+│   ├── Q2_Floyd'sTriangle/    # Pattern Programs
+│   │   ├── binary/           # Binary Pattern Version
+│   │   └── num/              # Numeric Pattern Version
+│   ├── Q3_PrimeSum/          # Prime Number Sum
+│   ├── Q4_GCD_LCM/          # GCD & LCM Calculator
+│   ├── Q5_DecimalToBinary/   # Binary Conversion
+│   ├── Q6_PerfectNumList/    # Perfect Numbers
+│   └── Q7_Rev_Alphabets/     # Alphabet Patterns
+├── Exercises/                 # Practice Problems
+└── Notes/                    # Learning Materials
 ```
 
 ## 📈 Progress Tracking
@@ -78,6 +95,7 @@ Java/
 - [x] Control Structures
 - [x] Object-Oriented Concepts
 - [x] Pattern Programs
+- [x] Number Theory Problems
 - [ ] Advanced Data Structures
 - [ ] File Handling
 - [ ] Collections Framework
