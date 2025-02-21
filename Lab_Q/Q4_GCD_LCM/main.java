@@ -1,4 +1,6 @@
-
+/*
+ * Q4. Write a program to find the GCD and LCM of two numbers.
+ */
 import java.util.Scanner;
 
 public class main {
