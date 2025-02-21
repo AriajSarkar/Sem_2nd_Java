@@ -1,4 +1,7 @@
-
+/*
+ * Write a program that converts a decimal number to binary. 
+ * The program should take an integer as input and output the binary representation of the number.
+ */
 import java.util.Scanner;
 
 public class main {
