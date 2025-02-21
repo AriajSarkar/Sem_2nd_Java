@@ -1,3 +1,6 @@
+/*
+ * Q6. Write a program to print all perfect numbers between 1 and 1000.
+ */
 public class  main {
 
     public static void main(String[] args) {
