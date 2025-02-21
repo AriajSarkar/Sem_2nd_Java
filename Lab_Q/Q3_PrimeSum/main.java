@@ -1,4 +1,7 @@
-
+/*
+ * Q3. WAP to input a number and check if it is prime. 
+ * If it is prime, then compute the sum of digits of the number.
+ */
 import java.util.Scanner;
 
 public class main {
