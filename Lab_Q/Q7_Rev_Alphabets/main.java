@@ -1,3 +1,6 @@
+/*
+ * Q7. Write a program to print alphabets in reverse order.
+ */
 public class main {
 
     public static void main(String[] args) {
