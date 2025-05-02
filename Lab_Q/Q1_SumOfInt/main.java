@@ -16,7 +16,7 @@
 // import java.util.Scanner
 public class main {
 
-    public static void main(String args[]) {
+    public static void Main(String[] args) {
         // Scanner scanner = new Scanner(System.in)
         // System.out.println("Enter Lower Bound: ");
         // int lower = scanner.nextInt();
@@ -29,7 +29,7 @@ public class main {
                 sum += i;
             }
         }
-        System.out.println("Sum of intergers Between 100 to 200 is: " + sum);
+        System.out.println("Sum of integers Between 100 to 200 is: " + sum);
     }
 }
 

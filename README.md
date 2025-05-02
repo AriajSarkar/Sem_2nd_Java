@@ -34,6 +34,49 @@
     - [Decimal to Binary Converter](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q5_DecimalToBinary/main.java)
     - [Perfect Number Finder](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q6_PerfectNumList/main.java)
     - [Reverse Alphabets Pattern](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Q7_Rev_Alphabets/main.java)
+  - Practice Programs
+    - [Command Line Arguments](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Syllabus_Q/SumOFAnyNum.java) - Sum of integers from command line
+    - Basic OOP Concepts
+      - [StudentInfo](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/StudentInfo.java) - Class and object demo
+      - [VehicleInfo](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/VehicleInfo.java) - Inheritance demo
+      - [CarInfo](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/CarInfo.java) - Constructor usage
+
+## 🆕 Recent Additions (May 2025)
+
+### ⚡ Practice Examples
+I've recently added several practice programs to improve my understanding of Java fundamentals:
+
+1. **Basic Java Concepts**
+   - [Variables](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/Variables.java) - Working with different variable types
+   - [Operators](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/Operators.java) - Arithmetic operators demo
+   - [Functions](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/Functions.java) - Method implementation examples
+   - [InputDemo](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/InputDemo.java) - Using Scanner for input
+
+2. **Object-Oriented Programming**
+   - [Abstract Classes & Polymorphism](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/ShapeTest.java) - Shape area calculation
+   - [Interfaces](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/DocumentTest.java) - Printer interface implementation
+
+3. **Interactive Programs**
+   - [Calculator](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/Calculator.java) - Simple arithmetic operations
+   - [LargestNumber](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/LargestNumber.java) - Finding max with multiple input methods
+   - [EvenOdd](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/EveOdd.java) - Number classification
+   - [SumOfN](https://github.com/AriajSarkar/Java/blob/main/Lab_Q/Practice/ChatGPT/SumOFn.java) - Sum of first n numbers
+
+### 🚀 Mini-Projects
+
+I've started implementing small project-based learning examples:
+
+- **[Student Marks Manager](https://github.com/AriajSarkar/Java/tree/main/Lab_Q/Practice/ChatGPT/Mini-Projects/Student-Marks-Manager)** - A console application that:
+  - Takes input for 5 subject marks
+  - Displays all marks
+  - Calculates total and average marks
+  - Finds the highest mark
+
+### 🛠️ Code Improvements
+
+- Fixed method signature in SumOfInt program (main → Main)
+- Updated .gitignore to exclude personal practice files
+- Improved code formatting and spelling corrections
 
 ## 🎯 Purpose
 
@@ -84,7 +127,12 @@ Java/
 │   ├── Q4_GCD_LCM/          # GCD & LCM Calculator
 │   ├── Q5_DecimalToBinary/   # Binary Conversion
 │   ├── Q6_PerfectNumList/    # Perfect Numbers
-│   └── Q7_Rev_Alphabets/     # Alphabet Patterns
+│   ├── Q7_Rev_Alphabets/     # Alphabet Patterns
+│   ├── Practice/             # Practice Programs
+│   │   ├── ChatGPT/          # ChatGPT-assisted examples
+│   │   │   └── Mini-Projects/ # Small project implementations
+│   │   └── ...               # Basic language practice
+│   └── Syllabus_Q/           # Syllabus-based exercises
 ├── Exercises/                 # Practice Problems
 └── Notes/                    # Learning Materials
 ```
@@ -96,6 +144,8 @@ Java/
 - [x] Object-Oriented Concepts
 - [x] Pattern Programs
 - [x] Number Theory Problems
+- [x] Basic OOP Implementation
+- [x] Method Creation & Usage
 - [ ] Advanced Data Structures
 - [ ] File Handling
 - [ ] Collections Framework
