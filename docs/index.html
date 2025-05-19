@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Folder Explorer</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2em;
+            background: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 1em;
+        }
+
+        li {
+            margin: 4px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0366d6;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📂 Java Repository Explorer</h1>
+    <ul id="file-list">
+        <li>Loading...</li>
+    </ul>
+
+    <script>
+        const repo = "AriajSarkar/Sem_2nd_Java"; // <-- change this
+        const branch = "main"; // or 'master' or your branch
+        const apiURL = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+
+        fetch(apiURL)
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById('file-list');
+                list.innerHTML = '';
+                const files = data.tree.filter(item => item.type === 'blob');
+                files.forEach(file => {
+                    const li = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `https://raw.githubusercontent.com/${repo}/${branch}/${file.path}`;
+                    link.textContent = file.path;
+                    link.target = '_blank';
+                    li.appendChild(link);
+                    list.appendChild(li);
+                });
+            })
+            .catch(err => {
+                document.getElementById('file-list').innerText = 'Failed to load files: ' + err;
+            });
+    </script>
+</body>
+
+</html>
