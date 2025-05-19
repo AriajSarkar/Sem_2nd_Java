@@ -2,36 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Java Folder Explorer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Repository Explorer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
     <style>
         body {
             font-family: monospace;
             padding: 2em;
-            background: #f9f9f9;
+            background: #f9f9fa;
+            color: #222;
         }
 
         h1 {
-            font-size: 1.4rem;
+            font-size: 1.5em;
+            margin-bottom: 1em;
         }
 
         ul {
             list-style: none;
-            padding-left: 1em;
+            padding-left: 0;
         }
 
         li {
             margin: 4px 0;
         }
 
+        .folder {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
         a {
-            text-decoration: none;
             color: #0366d6;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         a:hover {
             text-decoration: underline;
+        }
+
+        pre {
+            background: #282c34;
+            color: #ccc;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .file-content {
+            margin-top: 2em;
+        }
+
+        .file-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1em;
+            background: #f8f8f8;
+        }
+
+        code.hljs {
+            padding: 0;
+            background: none;
         }
     </style>
 </head>
@@ -41,31 +74,105 @@
     <ul id="file-list">
         <li>Loading...</li>
     </ul>
+    <div class="file-content" id="file-content"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
     <script>
-        const repo = "AriajSarkar/Sem_2nd_Java"; // <-- change this
-        const branch = "main"; // or 'master' or your branch
+        const repo = "AriajSarkar/Sem_2nd_Java";
+        const branch = "main";
         const apiURL = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+        const rawURL = `https://raw.githubusercontent.com/${repo}/${branch}/`;
+
+        const fileCache = new Map();
+        const structure = {};
 
         fetch(apiURL)
             .then(res => res.json())
             .then(data => {
-                const list = document.getElementById('file-list');
-                list.innerHTML = '';
-                const files = data.tree.filter(item => item.type === 'blob');
-                files.forEach(file => {
-                    const li = document.createElement('li');
-                    const link = document.createElement('a');
-                    link.href = `https://raw.githubusercontent.com/${repo}/${branch}/${file.path}`;
-                    link.textContent = file.path;
-                    link.target = '_blank';
-                    li.appendChild(link);
-                    list.appendChild(li);
-                });
+                document.getElementById("file-list").innerHTML = "";
+                const files = data.tree.filter(item => item.type === "blob");
+                files.forEach(file => addToStructure(file.path));
+                renderStructure(structure, document.getElementById("file-list"));
             })
             .catch(err => {
-                document.getElementById('file-list').innerText = 'Failed to load files: ' + err;
+                document.getElementById("file-list").innerHTML = "<li>Failed to load: " + err + "</li>";
             });
+
+        function addToStructure(path) {
+            const parts = path.split("/");
+            let current = structure;
+            for (let i = 0; i < parts.length; i++) {
+                if (!current[parts[i]]) {
+                    current[parts[i]] = i === parts.length - 1 ? null : {};
+                }
+                current = current[parts[i]];
+            }
+        }
+
+        function renderStructure(obj, container, path = "") {
+            const keys = Object.keys(obj).sort((a, b) => {
+                const isDirA = obj[a] !== null;
+                const isDirB = obj[b] !== null;
+                return isDirA === isDirB ? a.localeCompare(b) : isDirA ? -1 : 1;
+            });
+
+            keys.forEach(name => {
+                const fullPath = path + name;
+                const li = document.createElement("li");
+                if (obj[name] === null) {
+                    const link = document.createElement("a");
+                    link.textContent = fullPath;
+                    link.onclick = () => loadFile(fullPath);
+                    li.appendChild(link);
+                } else {
+                    li.innerHTML = `<div class="folder">📁 ${name}</div>`;
+                    const nested = document.createElement("ul");
+                    renderStructure(obj[name], nested, fullPath + "/");
+                    li.appendChild(nested);
+                }
+                container.appendChild(li);
+            });
+        }
+
+        function loadFile(path) {
+            const contentBox = document.getElementById("file-content");
+            contentBox.innerHTML = `<p><strong>Loading:</strong> ${path}</p>`;
+
+            if (fileCache.has(path)) {
+                renderCode(path, fileCache.get(path));
+                return;
+            }
+
+            fetch(rawURL + path)
+                .then(res => res.text())
+                .then(code => {
+                    fileCache.set(path, code);
+                    renderCode(path, code);
+                })
+                .catch(err => {
+                    contentBox.innerHTML = `<p>Error loading file: ${path}</p><pre>${err}</pre>`;
+                });
+        }
+
+        function renderCode(filename, code) {
+            const ext = filename.split(".").pop();
+            document.getElementById("file-content").innerHTML = `
+        <h3>📄 ${filename}</h3>
+        <div class="file-box">
+          <pre><code class="language-${ext}">${escapeHTML(code)}</code></pre>
+        </div>
+      `;
+            hljs.highlightAll();
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>"']/g, tag => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[tag]));
+        }
     </script>
 </body>
 
