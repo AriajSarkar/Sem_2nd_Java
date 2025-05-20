@@ -16,6 +16,5 @@ public class Q6_PalindromeCheck {
             System.out.println("Not palindrome");
         }
 
-        scanner.close();
     }
 }

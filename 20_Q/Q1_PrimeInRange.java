@@ -32,6 +32,5 @@ public class Q1_PrimeInRange {
         PrimeList primeList = new PrimeList(n);
         primeList.displayPrimes();
         
-        scanner.close();
     }
 }
