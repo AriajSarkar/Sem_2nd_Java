@@ -33,6 +33,8 @@ replay_pid*
 # Personal Config file
 .qodo
 bin
+.cache
+prompt.txt
 
 # Personal Practice Files
 
